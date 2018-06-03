@@ -19,16 +19,16 @@ def get_heading_list(url, page):
     #get list of product price headings on page
     headings[1] = soup.find_all('span',
         class_='woocommerce-Price-amount amount')
-    pop_extra_price(headings[1])
+    pop_presale_price(headings[1])
     return headings
 
-def pop_extra_price(headingss):
+def pop_presale_price(price_headings):
     """helper function to remove extra pre-sale prices from final list. Input
     list of headers, get back list of headers less those that had a particular
     tag"""
-    for item in headingss:
+    for item in price_headings:
         if item.parent.name == 'del':
-            headingss.pop(headingss.index(item))
+            price_headings.pop(price_headings.index(item))
 
 def strip_product(header_list):
     """input a list of tag-type values and return list of strings with
