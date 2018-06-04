@@ -110,6 +110,11 @@ today_date = str(dt.date.today())
 pot.to_csv(('prices'+ today_date +'.csv'), encoding='utf8',
            header=['item_name', 'item_price'], index_label='relative_position')
 
+#log filename
+filenames_file = open('filenames.txt')
+filenames_file.write(('/nprices'+ today_date +'.csv'), 'a')
+filenames_file.close()
+
 #pot.to_csv(('prices_salem'+ today_date +'.csv'), encoding='utf8',
 #           header=['item_name', 'item_price'], index_label='relative_position')
 
