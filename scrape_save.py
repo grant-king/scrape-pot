@@ -46,15 +46,6 @@ def strip_price(header_list):
         string_list[item] = str(header_list[item])[101:-7]
     return string_list
 
-def build_df(price_sers):
-    today_date = str(dt.date.today())
-    combined = pd.concat(price_sers, axis=1)
-    #give each column unique name, prices_...
-    combined.columns = ['prices_' + str(i) for i in
-                        range(1, (len(combined.columns)) + 1)]
-    combined.index.name = 'items'
-    return combined
-
 #------------------------------------------------------------------------------
 #Imports
 #------------------------------------------------------------------------------
