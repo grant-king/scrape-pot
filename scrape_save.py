@@ -1,4 +1,11 @@
 #------------------------------------------------------------------------------
+#Imports
+#------------------------------------------------------------------------------
+from bs4 import BeautifulSoup
+import requests
+import pandas as pd
+
+#------------------------------------------------------------------------------
 #Functions
 #------------------------------------------------------------------------------
 def get_heading_list(url, page):
@@ -45,13 +52,6 @@ def strip_price(header_list):
     for item in range(len(header_list)):
         string_list[item] = str(header_list[item])[101:-7]
     return string_list
-
-#------------------------------------------------------------------------------
-#Imports
-#------------------------------------------------------------------------------
-from bs4 import BeautifulSoup
-import requests
-import pandas as pd
 
 #------------------------------------------------------------------------------
 #Main
@@ -107,12 +107,13 @@ today_date = str(dt.date.today())
 #print(today_date)
 
 #write to csv and set index to position rather than name, use
-pot.to_csv(('prices'+ today_date +'.csv'), encoding='utf8',
+outfile = ('prices'+ today_date +'.csv')
+pot.to_csv('C:\\Users\\grant\\Documents\\GitHub\\scrape-pot\\' + outfile, encoding='utf8',
            header=['item_name', 'item_price'], index_label='relative_position')
 
 #log filename
-filenames_file = open('filenames.txt')
-filenames_file.write(('/nprices'+ today_date +'.csv'), 'a')
+filenames_file = open('C:\\Users\\grant\\Documents\\GitHub\\scrape-pot\\filenames.txt', 'a')
+filenames_file.write(('prices'+ today_date +'.csv, '))
 filenames_file.close()
 
 #pot.to_csv(('prices_salem'+ today_date +'.csv'), encoding='utf8',
