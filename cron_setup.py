@@ -2,10 +2,10 @@
 from crontab import CronTab
 #get access to crontab on windows
 #call task defined in 'testfile.tab'
-cron = CronTab(tabfile='testfile.tab')
+#cron = CronTab(tabfile='testfile.tab')
 
 #alternatively, define the task according to cron's syntax
-#cron = CronTab(tab="""* * * * * command""")
+cron = CronTab(tab="""* * * * * command""")
 
 #create a new job and define the task to be executed by command line
 job = cron.new(command='python scrape_save.py scrape_log.py')
